@@ -1,0 +1,12 @@
+{
+  "projectName": "luban-homebrew",
+  "packageManager": "pnpm",
+  "demos": [
+    {
+      "name": "Site",
+      "value": "site",
+      "description": "GitHub Pages docs site (WSX + Vite)",
+      "package": "@luban-homebrew/site"
+    }
+  ]
+}

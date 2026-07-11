@@ -10,8 +10,10 @@ vendor/bundle
 .idea/
 *.iml
 
-# Node / site build
+# Node / monorepo
 node_modules/
+.turbo/
+
+# Site build
 apps/site/dist/
 apps/site/.wsx-press/
-apps/site/.turbo/

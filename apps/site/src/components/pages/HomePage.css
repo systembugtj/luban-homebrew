@@ -5,8 +5,10 @@
 }
 
 .hero {
-  background: linear-gradient(180deg, var(--gopdf-bg-secondary) 0%, var(--gopdf-bg-primary) 100%);
-  color: var(--gopdf-text-primary);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(111, 183, 59, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--lb-bg-secondary) 0%, var(--lb-bg-primary) 100%);
+  color: var(--lb-text-primary);
   padding: 6rem 0 5rem;
   text-align: center;
 }
@@ -19,9 +21,11 @@
 
 .hero-title {
   font-size: clamp(2.25rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-weight: 800;
   margin: 0 0 1rem;
   letter-spacing: -0.03em;
+  color: var(--lb-accent-hover);
+  text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.25);
 }
 
 .hero-subtitle {
@@ -84,7 +88,11 @@
 .stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--gopdf-accent-color);
+  color: var(--lb-accent-hover);
+}
+
+.stat-item:nth-child(3) .stat-value {
+  color: var(--lb-green);
 }
 
 .stat-label {
