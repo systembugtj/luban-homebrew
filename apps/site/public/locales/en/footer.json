@@ -1,0 +1,13 @@
+{
+  "brandName": "luban-homebrew",
+  "description": "Homebrew tap for Linglong CLI tools — install, upgrade, and manage formulae with brew.",
+  "resources": {
+    "title": "Resources",
+    "docs": "Getting started",
+    "install": "Installation",
+    "formulas": "Available formulae",
+    "github": "luban-homebrew repo",
+    "homebrewDocs": "Homebrew tap guide"
+  },
+  "copyright": "© 2026 luban-homebrew contributors."
+}

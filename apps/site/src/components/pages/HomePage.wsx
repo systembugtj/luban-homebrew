@@ -1,0 +1,140 @@
+/** @jsxImportSource @wsxjs/wsx-core */
+
+import { LightComponent, autoRegister } from '@wsxjs/wsx-core';
+import { i18n } from '@wsxjs/wsx-i18next';
+import '@wsxjs/wsx-base-components';
+import styles from './HomePage.css?inline';
+import '../../components/common/Icon.wsx';
+import { INSTALL_SCRIPT_URL, TAP_ID } from '../../constants/tap';
+
+const QUICK_START_CODE = `# 1. install.js (recommended)
+curl -fsSL ${INSTALL_SCRIPT_URL} | node
+
+# 2. Direct install (no tap first)
+brew install --HEAD ${TAP_ID}/gopdf
+
+# 3. Tap then install
+brew tap ${TAP_ID}
+brew install --HEAD gopdf
+
+# Upgrade later
+brew upgrade gopdf`;
+
+@autoRegister({ tagName: 'home-page' })
+@i18n('home')
+export class HomePage extends LightComponent {
+  constructor() {
+    super({
+      styles,
+      styleName: 'home-page',
+    });
+  }
+
+  render() {
+    return (
+      <div class="home-page">
+        <section class="hero">
+          <div class="hero-container">
+            <h1 class="hero-title">{this.t('title')}</h1>
+            <p class="hero-subtitle">{this.t('subtitle')}</p>
+            <div class="hero-actions">
+              <wsx-link to="/docs/guide/getting-started" class="btn btn-primary btn-large">
+                {this.t('quickStartCTA', { ns: 'common' })}
+              </wsx-link>
+              <wsx-link to="/formulas" class="btn btn-secondary">
+                {this.t('formulasCTA', { ns: 'common' })}
+              </wsx-link>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-value">brew</div>
+                <div class="stat-label">{this.t('stats.brew')}</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">tap</div>
+                <div class="stat-label">{this.t('stats.tap')}</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">CLI</div>
+                <div class="stat-label">{this.t('stats.cli')}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="features">
+          <div class="features-container">
+            <h2 class="section-title">{this.t('features.title')}</h2>
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <wsx-icon name="package" />
+                </div>
+                <h3 class="feature-title">{this.t('features.native.title')}</h3>
+                <p class="feature-description">{this.t('features.native.description')}</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <wsx-icon name="device" />
+                </div>
+                <h3 class="feature-title">{this.t('features.script.title')}</h3>
+                <p class="feature-description">{this.t('features.script.description')}</p>
+              </div>
+              <wsx-link to="/formulas" class="feature-card feature-card-link">
+                <div class="feature-icon">
+                  <wsx-icon name="search" />
+                </div>
+                <h3 class="feature-title">{this.t('features.formulas.title')}</h3>
+                <p class="feature-description">{this.t('features.formulas.description')}</p>
+              </wsx-link>
+              <wsx-link to="/docs/guide/usage" class="feature-card feature-card-link">
+                <div class="feature-icon">
+                  <wsx-icon name="sparkles" />
+                </div>
+                <h3 class="feature-title">{this.t('features.usage.title')}</h3>
+                <p class="feature-description">{this.t('features.usage.description')}</p>
+              </wsx-link>
+            </div>
+          </div>
+        </section>
+
+        <section class="install-methods">
+          <div class="quick-start-container">
+            <h2 class="section-title">{this.t('install.title')}</h2>
+            <div class="code-example">
+              <p class="install-label">{this.t('install.scriptLabel')}</p>
+              <pre>
+                <code>{this.t('install.script')}</code>
+              </pre>
+              <p class="install-label">{this.t('install.directLabel')}</p>
+              <pre>
+                <code>{this.t('install.direct')}</code>
+              </pre>
+              <p class="install-label">{this.t('install.tapLabel')}</p>
+              <pre>
+                <code>{this.t('install.tap')}</code>
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="quick-start">
+          <div class="quick-start-container">
+            <h2 class="section-title">{this.t('quickStart.title')}</h2>
+            <p class="section-description">{this.t('quickStart.description')}</p>
+            <div class="code-example">
+              <pre>
+                <code>{QUICK_START_CODE}</code>
+              </pre>
+            </div>
+            <div class="quick-start-actions">
+              <wsx-link to="/docs/guide/installation" class="btn btn-primary">
+                {this.t('viewDocs', { ns: 'common' })}
+              </wsx-link>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "luban-homebrew",
+  "subtitle": "Linglong 相关 CLI 的 Homebrew 第三方 tap — brew 安装、brew upgrade 升级，无需手动下载。",
+  "stats": {
+    "brew": "原生安装",
+    "tap": "第三方 tap",
+    "cli": "终端工具"
+  },
+  "features": {
+    "title": "为什么用这个 tap",
+    "native": {
+      "title": "Homebrew 原生",
+      "description": "与 homebrew-core 相同体验 — tap 一次，brew install，brew upgrade。"
+    },
+    "script": {
+      "title": "一行 install.js",
+      "description": "curl 托管脚本，自动检测 brew 并安装默认 formula。"
+    },
+    "formulas": {
+      "title": "可用 formula",
+      "description": "Formula/ 下每个包都有安装命令与上游链接。"
+    },
+    "usage": {
+      "title": "如何使用",
+      "description": "直接安装、先 tap 再装、Brewfile 与升级方式。"
+    }
+  },
+  "quickStart": {
+    "title": "快速开始",
+    "description": "安装 gopdf（默认 formula），然后运行 gopdf --help。"
+  },
+  "install": {
+    "title": "安装",
+    "script": "curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node",
+    "direct": "brew install --HEAD systembugtj/luban-homebrew/gopdf",
+    "tap": "brew tap systembugtj/luban-homebrew\nbrew install --HEAD gopdf",
+    "scriptLabel": "install.js",
+    "directLabel": "直接安装（无需先 tap）",
+    "tapLabel": "先 tap 再安装"
+  }
+}

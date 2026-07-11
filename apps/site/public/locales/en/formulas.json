@@ -1,0 +1,16 @@
+{
+  "title": "Available formulae",
+  "subtitle": "Packages hosted in this tap. Install with brew or the install.js script.",
+  "upstream": "Upstream project →",
+  "items": [
+    {
+      "name": "gopdf",
+      "summary": "Local PDF CLI — compress, analyze, OCR, MCP (gopdf-cli). Builds from main until @gopdfjs/pdf-cli is on npm.",
+      "install": "brew install --HEAD systembugtj/luban-homebrew/gopdf",
+      "homepage": "https://github.com/gopdfjs/gopdf-cli",
+      "status": "HEAD"
+    }
+  ],
+  "note": "More formulae appear here as they are added under Formula/.",
+  "cta": "Usage guide"
+}

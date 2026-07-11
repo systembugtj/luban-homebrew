@@ -1,0 +1,74 @@
+/** @jsxImportSource @wsxjs/wsx-core */
+
+import { LightComponent, autoRegister } from '@wsxjs/wsx-core';
+import { i18n } from '@wsxjs/wsx-i18next';
+import '@wsxjs/wsx-base-components';
+import styles from './FormulasPage.css?inline';
+import '../../components/common/Icon.wsx';
+
+@autoRegister({ tagName: 'formulas-page' })
+@i18n('formulas')
+export class FormulasPage extends LightComponent {
+  constructor() {
+    super({
+      styles,
+      styleName: 'formulas-page',
+    });
+  }
+
+  render() {
+    const items = this.t('items', { returnObjects: true }) as Array<{
+      name: string;
+      summary: string;
+      install: string;
+      homepage: string;
+      status: string;
+    }>;
+
+    return (
+      <div class="formulas-page">
+        <section class="formulas-hero">
+          <div class="formulas-container">
+            <h1 class="formulas-title">{this.t('title')}</h1>
+            <p class="formulas-subtitle">{this.t('subtitle')}</p>
+          </div>
+        </section>
+
+        <section class="formulas-grid-section">
+          <div class="formulas-container">
+            <div class="formulas-grid">
+              {items.map((item) => (
+                <article class="formula-card" key={item.name}>
+                  <div class="formula-card-header">
+                    <wsx-icon name="package" />
+                    <h2 class="formula-name">{item.name}</h2>
+                    <span class="formula-status">{item.status}</span>
+                  </div>
+                  <p class="formula-description">{item.summary}</p>
+                  <code class="formula-install">{item.install}</code>
+                  <a
+                    class="formula-link"
+                    href={item.homepage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {this.t('upstream')}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="formulas-cta">
+          <div class="formulas-container">
+            <p class="formulas-note">{this.t('note')}</p>
+            <wsx-link to="/docs/guide/usage" class="btn btn-primary">
+              {this.t('cta')}
+            </wsx-link>
+          </div>
+        </section>
+      </div>
+    );
+  }
+}

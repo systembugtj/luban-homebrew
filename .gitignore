@@ -1,0 +1,17 @@
+# Homebrew
+*.bottle.*
+.bundle/
+vendor/bundle
+
+# OS / Editor
+.DS_Store
+*.swp
+*.swo
+.idea/
+*.iml
+
+# Node / site build
+node_modules/
+apps/site/dist/
+apps/site/.wsx-press/
+apps/site/.turbo/

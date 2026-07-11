@@ -1,0 +1,41 @@
+{
+  "title": "luban-homebrew",
+  "subtitle": "Homebrew tap for Linglong CLI tools — install with brew, upgrade with brew upgrade, no manual downloads.",
+  "stats": {
+    "brew": "Native install",
+    "tap": "Third-party tap",
+    "cli": "Terminal tools"
+  },
+  "features": {
+    "title": "Why this tap",
+    "native": {
+      "title": "Homebrew native",
+      "description": "Formulae install like homebrew-core — tap once, brew install, brew upgrade."
+    },
+    "script": {
+      "title": "One-line install.js",
+      "description": "curl the hosted script; it checks for brew and installs the default formula."
+    },
+    "formulas": {
+      "title": "Available formulae",
+      "description": "Every package in Formula/ with install commands and upstream links."
+    },
+    "usage": {
+      "title": "How to use",
+      "description": "Direct install, tap-first workflow, Brewfile, and upgrade paths."
+    }
+  },
+  "quickStart": {
+    "title": "Quick start",
+    "description": "Install gopdf (default formula), then run gopdf --help."
+  },
+  "install": {
+    "title": "Install",
+    "script": "curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node",
+    "direct": "brew install --HEAD systembugtj/luban-homebrew/gopdf",
+    "tap": "brew tap systembugtj/luban-homebrew\nbrew install --HEAD gopdf",
+    "scriptLabel": "install.js",
+    "directLabel": "Direct (no tap first)",
+    "tapLabel": "Tap then install"
+  }
+}

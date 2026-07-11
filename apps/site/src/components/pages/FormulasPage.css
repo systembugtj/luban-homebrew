@@ -1,0 +1,117 @@
+.formulas-page {
+  background: var(--gopdf-bg-primary);
+  color: var(--gopdf-text-primary);
+  min-height: calc(100vh - 8rem);
+}
+
+.formulas-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.formulas-hero {
+  padding: 4rem 0 2rem;
+  text-align: center;
+}
+
+.formulas-title {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.formulas-subtitle {
+  color: var(--gopdf-text-secondary);
+  font-size: 1.0625rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.formulas-grid-section {
+  padding: 2rem 0 3rem;
+}
+
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.25rem;
+}
+
+.formula-card {
+  background: var(--gopdf-bg-tertiary);
+  border: 1px solid var(--gopdf-border-color);
+  border-radius: var(--gopdf-radius-md);
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formula-card:hover {
+  border-color: var(--gopdf-accent-glow);
+  box-shadow: var(--gopdf-shadow-lg);
+}
+
+.formula-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.formula-name {
+  font-size: 1.125rem;
+  font-family: var(--gopdf-font-mono);
+  margin: 0;
+  color: #fdba74;
+}
+
+.formula-status {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--gopdf-radius-sm);
+  background: var(--gopdf-bg-secondary);
+  border: 1px solid var(--gopdf-border-color);
+  color: var(--gopdf-text-secondary);
+}
+
+.formula-description {
+  color: var(--gopdf-text-secondary);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.formula-install {
+  display: block;
+  background: var(--gopdf-bg-secondary);
+  border: 1px solid var(--gopdf-border-color);
+  border-radius: var(--gopdf-radius-sm);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--gopdf-font-mono);
+  font-size: 0.75rem;
+  overflow-x: auto;
+  color: var(--gopdf-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.formula-link {
+  font-size: 0.875rem;
+  color: var(--gopdf-accent-color);
+  text-decoration: none;
+}
+
+.formula-link:hover {
+  text-decoration: underline;
+}
+
+.formulas-cta {
+  padding: 2rem 0 4rem;
+  text-align: center;
+}
+
+.formulas-note {
+  color: var(--gopdf-text-secondary);
+  margin: 0 0 1.5rem;
+}

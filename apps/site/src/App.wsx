@@ -1,0 +1,35 @@
+/** @jsxImportSource @wsxjs/wsx-core */
+
+import { LightComponent, autoRegister } from '@wsxjs/wsx-core';
+import styles from './App.css?inline';
+import '@wsxjs/wsx-base-components';
+import '@wsxjs/wsx-router';
+import './components/layout/AppHeader.wsx';
+import './components/layout/AppFooter.wsx';
+import './components/pages/HomePage.wsx';
+import './components/pages/FormulasPage.wsx';
+import './components/pages/DocsPage.wsx';
+
+@autoRegister({ tagName: 'luban-app' })
+export default class App extends LightComponent {
+  constructor() {
+    super({
+      styles,
+      styleName: 'luban-app',
+    });
+  }
+
+  render() {
+    return (
+      <div class="app-container">
+        <luban-app-header />
+        <wsx-router mode="hash">
+          <wsx-view route="/" component="home-page" />
+          <wsx-view route="/formulas" component="formulas-page" />
+          <wsx-view route="/docs/:category/:page" component="docs-page" />
+        </wsx-router>
+        <luban-app-footer />
+      </div>
+    );
+  }
+}

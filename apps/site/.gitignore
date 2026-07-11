@@ -1,0 +1,4 @@
+.wsx-press
+dist
+node_modules
+.turbo

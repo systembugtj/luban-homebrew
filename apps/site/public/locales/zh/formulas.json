@@ -1,0 +1,16 @@
+{
+  "title": "可用 formula",
+  "subtitle": "本 tap 托管的包。可用 brew 或 install.js 安装。",
+  "upstream": "上游项目 →",
+  "items": [
+    {
+      "name": "gopdf",
+      "summary": "本地 PDF CLI — 压缩、分析、OCR、MCP（gopdf-cli）。@gopdfjs/pdf-cli 发布到 npm 前从 main 构建。",
+      "install": "brew install --HEAD systembugtj/luban-homebrew/gopdf",
+      "homepage": "https://github.com/gopdfjs/gopdf-cli",
+      "status": "HEAD"
+    }
+  ],
+  "note": "Formula/ 下新增 formula 后会同步更新此列表。",
+  "cta": "使用指南"
+}

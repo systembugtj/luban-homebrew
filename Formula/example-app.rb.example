@@ -1,0 +1,41 @@
+# 复制本文件为 <your-app>.rb 并修改后使用。Homebrew 仅加载 .rb 文件，不会加载 .example。
+# 计算 sha256: curl -L <url> | shasum -a 256
+#
+# typed: false
+# frozen_string_literal: true
+
+class ExampleApp < Formula
+  desc "Example CLI app distributed via GitHub Releases"
+  homepage "https://github.com/YOUR_GITHUB_USER/example-app"
+  version "0.1.0"
+
+  on_macos do
+    on_intel do
+      url "https://github.com/YOUR_GITHUB_USER/example-app/releases/download/v0.1.0/example-app-darwin-amd64.tar.gz"
+      sha256 "REPLACE_WITH_SHA256"
+    end
+    on_arm do
+      url "https://github.com/YOUR_GITHUB_USER/example-app/releases/download/v0.1.0/example-app-darwin-arm64.tar.gz"
+      sha256 "REPLACE_WITH_SHA256"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/YOUR_GITHUB_USER/example-app/releases/download/v0.1.0/example-app-linux-amd64.tar.gz"
+      sha256 "REPLACE_WITH_SHA256"
+    end
+    on_arm do
+      url "https://github.com/YOUR_GITHUB_USER/example-app/releases/download/v0.1.0/example-app-linux-arm64.tar.gz"
+      sha256 "REPLACE_WITH_SHA256"
+    end
+  end
+
+  def install
+    bin.install "example-app"
+  end
+
+  test do
+    assert_match "version", shell_output("#{bin}/example-app --version 2>&1", 1)
+  end
+end
