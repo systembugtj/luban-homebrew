@@ -6,7 +6,7 @@ import '@wsxjs/wsx-base-components';
 import styles from './HomePage.css?inline';
 import '../../components/common/Icon.wsx';
 import { INSTALL_SCRIPT_URL, TAP_ID } from '../../constants/tap';
-import { sitePath } from '../../site-base';
+import { sitePath } from '../../sitePaths';
 
 const QUICK_START_CODE = `# 1. install.js (recommended)
 curl -fsSL ${INSTALL_SCRIPT_URL} | node

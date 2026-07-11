@@ -1,5 +1,5 @@
 /**
- * Generate sitemap.xml for GitHub Pages (hash routes use root paths for SEO landing).
+ * Generate sitemap.xml for GitHub Pages (History API routes under project base).
  */
 
 import { writeFileSync } from 'fs';

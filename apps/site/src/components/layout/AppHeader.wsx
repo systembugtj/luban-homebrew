@@ -7,7 +7,7 @@ import styles from './AppHeader.css?inline';
 import '../../components/common/LanguageSwitcher.wsx';
 import '../../components/common/ThemeSwitcher.wsx';
 import { GITHUB_REPO_URL } from '../../constants/tap';
-import { siteAsset, sitePath } from '../../site-base';
+import { siteAsset, sitePath } from '../../sitePaths';
 
 @autoRegister({ tagName: 'luban-app-header' })
 @i18n('common')

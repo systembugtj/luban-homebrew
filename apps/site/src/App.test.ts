@@ -6,7 +6,7 @@ import {
   INSTALL_SCRIPT_URL,
   SITE_URL,
 } from './constants/tap';
-import { siteAsset, sitePath } from './site-base';
+import { joinSitePath, siteAsset, sitePath } from './sitePaths';
 
 describe('tap constants', () => {
   it('uses the luban-homebrew tap id', () => {
@@ -21,10 +21,25 @@ describe('tap constants', () => {
   });
 });
 
+describe('joinSitePath', () => {
+  it('returns root for home in dev', () => {
+    expect(joinSitePath('/', '/')).toBe('/');
+    expect(joinSitePath('/', '/formulas')).toBe('/formulas');
+  });
+
+  it('prefixes routes with GitHub Pages base', () => {
+    expect(joinSitePath('/luban-homebrew/', '/')).toBe('/luban-homebrew/');
+    expect(joinSitePath('/luban-homebrew/', '/formulas')).toBe('/luban-homebrew/formulas');
+    expect(joinSitePath('/luban-homebrew/', '/docs/guide/getting-started')).toBe(
+      '/luban-homebrew/docs/guide/getting-started',
+    );
+  });
+});
+
 describe('sitePath', () => {
   it('prefixes routes with Vite base', () => {
     expect(sitePath('/formulas')).toBe('/luban-homebrew/formulas');
-    expect(sitePath('/')).toBe('/luban-homebrew');
+    expect(sitePath('/')).toBe('/luban-homebrew/');
   });
 
   it('prefixes static assets', () => {

@@ -4,15 +4,17 @@ import { wsxPress } from '@wsxjs/wsx-press/node';
 import UnoCSS from 'unocss/vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { cpSync, existsSync } from 'fs';
+import { cpSync, copyFileSync, existsSync } from 'fs';
+import { resolveSiteBase } from './vite-plugins/resolveSiteBase';
+import { wsxPressBasePlugin } from './vite-plugins/wsxPressBasePlugin';
 
 const SITE_DEV_PORT = 5177;
 const SITE_PREVIEW_PORT = 5178;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const SITE_BASE = process.env.VITE_BASE ?? '/';
-const IS_GH_PAGES = SITE_BASE !== '/';
+const SITE_BASE = resolveSiteBase();
+const IS_GH_PAGES = process.env.GITHUB_PAGES === 'true';
 
 /** Copy wsx-press build output into dist for static hosting. */
 function copyWsxPressPlugin(): Plugin {
@@ -31,20 +33,23 @@ function copyWsxPressPlugin(): Plugin {
   };
 }
 
-/** GitHub Pages SPA fallback: duplicate index.html as 404.html (no redirect — router uses pathname). */
+/** GitHub Pages SPA fallback — 404.html is a copy of index.html (History API). */
 function copy404Plugin(): Plugin {
   return {
     name: 'copy-404',
     apply: 'build',
     closeBundle() {
-      if (!IS_GH_PAGES) return;
+      if (!IS_GH_PAGES) {
+        return;
+      }
 
-      const outDir = path.resolve(__dirname, 'dist');
-      const indexHtml = path.resolve(outDir, 'index.html');
-      const notFoundHtml = path.resolve(outDir, '404.html');
-      if (!existsSync(indexHtml)) return;
+      const indexHtml = path.resolve(__dirname, 'dist/index.html');
+      const notFoundHtml = path.resolve(__dirname, 'dist/404.html');
+      if (!existsSync(indexHtml)) {
+        return;
+      }
 
-      cpSync(indexHtml, notFoundHtml, { force: true });
+      copyFileSync(indexHtml, notFoundHtml);
     },
   };
 }
@@ -57,6 +62,7 @@ export default defineConfig(({ mode }) => ({
       docsRoot: path.resolve(__dirname, './public/docs'),
       outputDir: path.resolve(__dirname, './.wsx-press'),
     }),
+    wsxPressBasePlugin(SITE_BASE),
     UnoCSS(),
     wsx({
       debug: false,
@@ -105,5 +111,4 @@ export default defineConfig(({ mode }) => ({
       '@wsxjs/wsx-router',
     ],
   },
-
 }));

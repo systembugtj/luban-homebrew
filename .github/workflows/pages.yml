@@ -35,15 +35,17 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: apps/site/pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies
-        working-directory: apps/site
         run: pnpm install --frozen-lockfile
 
-      - name: Build site
+      - name: Build site for GitHub Pages
         working-directory: apps/site
-        run: pnpm build
+        run: pnpm build:pages
+        env:
+          GITHUB_PAGES: 'true'
+          VITE_SITE_URL: https://www.systembug.me/luban-homebrew
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -5,7 +5,7 @@ import { i18n } from '@wsxjs/wsx-i18next';
 import '@wsxjs/wsx-base-components';
 import styles from './AppFooter.css?inline';
 import { GITHUB_REPO_URL } from '../../constants/tap';
-import { sitePath } from '../../site-base';
+import { sitePath } from '../../sitePaths';
 
 @autoRegister({ tagName: 'luban-app-footer' })
 @i18n('footer')

@@ -5,7 +5,7 @@ import { i18n } from '@wsxjs/wsx-i18next';
 import '@wsxjs/wsx-base-components';
 import styles from './FormulasPage.css?inline';
 import '../../components/common/Icon.wsx';
-import { sitePath } from '../../site-base';
+import { sitePath } from '../../sitePaths';
 
 type FormulaItem = {
   name: string;
