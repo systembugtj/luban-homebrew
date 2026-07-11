@@ -15,7 +15,7 @@ const logger = createLogger('Luban-Site');
 const THEME_STORAGE_KEY = 'luban-theme';
 
 function initTheme(): void {
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'dark';
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'light';
   const theme = savedTheme === 'light' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme);
   logger.info(`Theme initialized: ${theme}`);

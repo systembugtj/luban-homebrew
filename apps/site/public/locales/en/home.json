@@ -1,16 +1,12 @@
 {
   "title": "luban-homebrew",
-  "subtitle": "Homebrew tap for Linglong CLI tools — install with brew, upgrade with brew upgrade, no manual downloads.",
-  "stats": {
-    "brew": "Native install",
-    "tap": "Third-party tap",
-    "cli": "Terminal tools"
-  },
+  "subtitle": "A third-party Homebrew tap for Linglong CLI tools — tap once, brew install, brew upgrade.",
+  "tapBadge": "brew tap {{tap}}",
   "features": {
-    "title": "Why this tap",
+    "title": "What this tap provides",
     "native": {
       "title": "Homebrew native",
-      "description": "Formulae install like homebrew-core — tap once, brew install, brew upgrade."
+      "description": "Formulae install like homebrew-core — same tap, install, and upgrade workflow."
     },
     "script": {
       "title": "One-line install.js",
@@ -25,12 +21,11 @@
       "description": "Direct install, tap-first workflow, Brewfile, and upgrade paths."
     }
   },
-  "quickStart": {
-    "title": "Quick start",
-    "description": "Install gopdf (default formula), then run gopdf --help."
-  },
   "install": {
-    "title": "Install",
+    "title": "Other install methods",
+    "leadTitle": "Install gopdf",
+    "hint": "Paste in Terminal. Requires Homebrew on macOS or Linux.",
+    "methodsIntro": "Prefer brew commands? Use one of these instead of install.js.",
     "script": "curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node",
     "direct": "brew install --HEAD systembugtj/luban-homebrew/gopdf",
     "tap": "brew tap systembugtj/luban-homebrew\nbrew install --HEAD gopdf",

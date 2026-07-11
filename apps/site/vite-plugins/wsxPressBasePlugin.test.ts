@@ -1,26 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { transformWsxPressClient } from './wsxPressBasePlugin';
 
-function transformWsxPressClient(code: string, siteBase: string): string {
-  if (siteBase === '/' || siteBase === '') {
-    return code;
-  }
-
-  const normalizedBase = siteBase.endsWith('/') ? siteBase.slice(0, -1) : siteBase;
-
-  return code
-    .replaceAll('"/.wsx-press/', `"${normalizedBase}/.wsx-press/`)
-    .replaceAll('`/docs/', `\`${normalizedBase}/docs/`)
-    .replaceAll(
-      'routeInfo.path.startsWith("/docs/")',
-      "routeInfo.path.includes('/docs/')",
-    )
-    .replaceAll(
-      'routeInfo.path.slice(6); // 移除 "/docs/"',
-      "routeInfo.path.split('/docs/')[1] || '';",
-    );
-}
-
-describe('wsxPressBasePlugin transform', () => {
+describe('transformWsxPressClient', () => {
   it('rewrites fetch URLs and doc route parsing for GitHub Pages subpath', () => {
     const input = `
       fetch("/.wsx-press/docs-meta.json");
@@ -28,6 +9,8 @@ describe('wsxPressBasePlugin transform', () => {
       if (routeInfo.path.startsWith("/docs/")) {
         docPath = routeInfo.path.slice(6); // 移除 "/docs/"
       }
+      if (e.path.startsWith("/docs/"))
+        r = e.path.slice(6);
     `;
 
     const output = transformWsxPressClient(input, '/luban-homebrew/');
@@ -35,6 +18,8 @@ describe('wsxPressBasePlugin transform', () => {
     expect(output).toContain('`/luban-homebrew/docs/${docPath}.md`');
     expect(output).toContain("routeInfo.path.includes('/docs/')");
     expect(output).toContain("routeInfo.path.split('/docs/')[1]");
+    expect(output).toContain("e.path.includes('/docs/')");
+    expect(output).toContain("e.path.split('/docs/')[1]");
   });
 
   it('leaves dev source unchanged', () => {

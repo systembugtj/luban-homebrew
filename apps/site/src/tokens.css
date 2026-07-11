@@ -1,78 +1,103 @@
 /**
- * luban-homebrew design tokens
- * Homebrew brew.sh warm brown/gold + Linglong blue/green accents.
+ * luban-homebrew — Homebrew tap site tokens (brew.sh yellow + terminal blocks).
  */
 :root,
-[data-theme='dark'] {
-  --lb-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --lb-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+[data-theme='light'] {
+  --lb-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+  --lb-font-display: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  --lb-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-  /* Homebrew brew.sh */
-  --lb-bg-primary: #2e2a24;
-  --lb-bg-secondary: #1f1c18;
-  --lb-bg-tertiary: #3a342c;
-  --lb-bg-elevated: #453d33;
+  --lb-brew-yellow: #ffcc00;
+  --lb-brew-yellow-dark: #e6b800;
+
+  --lb-bg-primary: #ffffff;
+  --lb-bg-secondary: var(--lb-brew-yellow);
+  --lb-bg-tertiary: #fff8e1;
+  --lb-bg-elevated: #ffffff;
+  --lb-bg-terminal: #232629;
+
+  --lb-text-primary: #1f1f1f;
+  --lb-text-secondary: #5c4a32;
+  --lb-text-subtle: #8b7355;
+  --lb-text-on-accent: #1f1f1f;
+  --lb-text-on-yellow: #1f1f1f;
+  --lb-text-terminal: #ececec;
+  --lb-text-terminal-muted: #a8a8a8;
+
+  --lb-accent-color: #ae5d00;
+  --lb-accent-hover: #cc7000;
+  --lb-accent-active: #8b4d00;
+  --lb-accent-soft: rgba(174, 93, 0, 0.1);
+  --lb-accent-glow: rgba(255, 204, 0, 0.45);
+
+  --lb-green: #2d6a1e;
+  --lb-green-soft: rgba(45, 106, 30, 0.1);
+  --lb-blue: #004697;
+  --lb-blue-soft: rgba(0, 70, 151, 0.08);
+
+  --lb-border-color: rgba(31, 31, 31, 0.12);
+  --lb-border-strong: rgba(31, 31, 31, 0.2);
+
+  --lb-shadow-sm: 0 1px 2px rgba(31, 31, 31, 0.06);
+  --lb-shadow-md: 0 4px 16px rgba(31, 31, 31, 0.08);
+  --lb-shadow-lg: 0 8px 24px rgba(31, 31, 31, 0.1);
+
+  --lb-radius-sm: 4px;
+  --lb-radius-md: 6px;
+  --lb-radius-lg: 8px;
+
+  --lb-scrollbar-size: 10px;
+  --lb-scrollbar-track: #fff8e1;
+  --lb-scrollbar-thumb: #c9a227;
+  --lb-scrollbar-thumb-hover: var(--lb-accent-hover);
+  --lb-scrollbar-terminal-track: #1a1b1d;
+  --lb-scrollbar-terminal-thumb: #4a4d52;
+  --lb-scrollbar-terminal-thumb-hover: #6b6f76;
+}
+
+[data-theme='dark'] {
+  --lb-bg-primary: #1a1612;
+  --lb-bg-secondary: #2a2318;
+  --lb-bg-tertiary: #352c1f;
+  --lb-bg-elevated: #3d3428;
+  --lb-bg-terminal: #0f0e0c;
 
   --lb-text-primary: #ffd79a;
   --lb-text-secondary: #c9b896;
   --lb-text-subtle: #9c7645;
-  --lb-text-on-accent: #2e2a24;
+  --lb-text-on-accent: #1a1612;
+  --lb-text-on-yellow: #1a1612;
+  --lb-text-terminal: #ececec;
+  --lb-text-terminal-muted: #a8a8a8;
 
   --lb-accent-color: #e2a843;
   --lb-accent-hover: #f7c96c;
   --lb-accent-active: #bb8844;
   --lb-accent-soft: rgba(226, 168, 67, 0.14);
-  --lb-accent-glow: rgba(247, 201, 108, 0.35);
+  --lb-accent-glow: rgba(247, 201, 108, 0.25);
 
-  /* Linglong */
   --lb-green: #6fb73b;
-  --lb-green-soft: rgba(111, 183, 59, 0.16);
-  --lb-blue: #004697;
-  --lb-blue-soft: rgba(0, 70, 151, 0.18);
+  --lb-green-soft: rgba(111, 183, 59, 0.14);
+  --lb-blue: #6ba3e0;
+  --lb-blue-soft: rgba(107, 163, 224, 0.12);
 
   --lb-border-color: rgba(255, 215, 154, 0.12);
   --lb-border-strong: rgba(255, 215, 154, 0.22);
 
-  --lb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
-  --lb-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --lb-shadow-lg: 0 0 0 1px rgba(226, 168, 67, 0.22), 0 8px 32px rgba(0, 0, 0, 0.35);
+  --lb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --lb-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --lb-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 
-  --lb-radius-sm: 8px;
-  --lb-radius-md: 12px;
-  --lb-radius-lg: 16px;
+  --lb-scrollbar-track: var(--lb-bg-secondary);
+  --lb-scrollbar-thumb: #6b5638;
+  --lb-scrollbar-thumb-hover: var(--lb-accent-hover);
+  --lb-scrollbar-terminal-track: #0a0a09;
+  --lb-scrollbar-terminal-thumb: #3d3830;
+  --lb-scrollbar-terminal-thumb-hover: #5c5348;
 }
 
-[data-theme='light'] {
-  --lb-bg-primary: #faf6ef;
-  --lb-bg-secondary: #fffdf8;
-  --lb-bg-tertiary: #f0e8d8;
-  --lb-bg-elevated: #ffffff;
-
-  --lb-text-primary: #2e2a24;
-  --lb-text-secondary: #745626;
-  --lb-text-subtle: #9c7645;
-  --lb-text-on-accent: #fffdf8;
-
-  --lb-accent-color: #bb8844;
-  --lb-accent-hover: #e2a843;
-  --lb-accent-active: #745626;
-  --lb-accent-soft: rgba(187, 136, 68, 0.12);
-  --lb-accent-glow: rgba(226, 168, 67, 0.28);
-
-  --lb-green: #5a9a2f;
-  --lb-green-soft: rgba(111, 183, 59, 0.12);
-  --lb-blue: #004697;
-  --lb-blue-soft: rgba(0, 70, 151, 0.1);
-
-  --lb-border-color: rgba(46, 42, 36, 0.1);
-  --lb-border-strong: rgba(46, 42, 36, 0.16);
-
-  --lb-shadow-sm: 0 1px 2px rgba(46, 42, 36, 0.06);
-  --lb-shadow-md: 0 8px 24px rgba(46, 42, 36, 0.08);
-  --lb-shadow-lg: 0 0 0 1px rgba(187, 136, 68, 0.18), 0 8px 24px rgba(46, 42, 36, 0.08);
-}
-
-/* Legacy alias — wsx-press bridge still references gopdf-* in main.css until remapped */
+/* wsx-press bridge — legacy gopdf-* aliases */
 :root,
 [data-theme='dark'],
 [data-theme='light'] {

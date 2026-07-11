@@ -109,6 +109,10 @@ export default defineConfig(({ mode }) => ({
       '@wsxjs/wsx-core',
       '@wsxjs/wsx-base-components',
       '@wsxjs/wsx-router',
+      '@wsxjs/wsx-i18next',
+      '@wsxjs/wsx-press',
+      '@wsxjs/wsx-press/client',
+      '@wsxjs/wsx-marked-components',
     ],
   },
 }));
