@@ -26,7 +26,7 @@ brew install --HEAD systembugtj/luban-homebrew/gopdf
 Or via install.js:
 
 ```bash
-curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 ```
 
 ### Binaries

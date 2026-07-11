@@ -16,7 +16,7 @@ A Homebrew **tap** — third-party formulae hosted at `systembugtj/luban-homebre
 **install.js:**
 
 ```bash
-curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 ```
 
 **brew:**

@@ -20,7 +20,7 @@ GitHub repo: [github.com/systembugtj/luban-homebrew](https://github.com/systembu
 ### One line (install.js)
 
 ```bash
-curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 ```
 
 Defaults to **`gopdf`** with **`--HEAD`**.

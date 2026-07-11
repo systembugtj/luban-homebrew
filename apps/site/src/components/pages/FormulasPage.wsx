@@ -5,6 +5,15 @@ import { i18n } from '@wsxjs/wsx-i18next';
 import '@wsxjs/wsx-base-components';
 import styles from './FormulasPage.css?inline';
 import '../../components/common/Icon.wsx';
+import { sitePath } from '../../site-base';
+
+type FormulaItem = {
+  name: string;
+  summary: string;
+  install: string;
+  homepage: string;
+  status: string;
+};
 
 @autoRegister({ tagName: 'formulas-page' })
 @i18n('formulas')
@@ -17,13 +26,8 @@ export class FormulasPage extends LightComponent {
   }
 
   render() {
-    const items = this.t('items', { returnObjects: true }) as Array<{
-      name: string;
-      summary: string;
-      install: string;
-      homepage: string;
-      status: string;
-    }>;
+    const rawItems = this.t('items', { returnObjects: true });
+    const items = Array.isArray(rawItems) ? (rawItems as FormulaItem[]) : [];
 
     return (
       <div class="formulas-page">
@@ -63,7 +67,7 @@ export class FormulasPage extends LightComponent {
         <section class="formulas-cta">
           <div class="formulas-container">
             <p class="formulas-note">{this.t('note')}</p>
-            <wsx-link to="/docs/guide/usage" class="btn btn-primary">
+            <wsx-link to={sitePath('/docs/guide/usage')} class="btn btn-primary">
               {this.t('cta')}
             </wsx-link>
           </div>

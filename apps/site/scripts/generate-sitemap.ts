@@ -5,7 +5,7 @@
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 
-const BASE_URL = process.env.VITE_SITE_URL || 'https://systembugtj.github.io/luban-homebrew';
+const BASE_URL = process.env.VITE_SITE_URL || 'https://www.systembug.me/luban-homebrew';
 
 const routes = [
   '/',

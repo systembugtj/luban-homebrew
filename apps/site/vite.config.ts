@@ -4,7 +4,7 @@ import { wsxPress } from '@wsxjs/wsx-press/node';
 import UnoCSS from 'unocss/vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { cpSync, existsSync, readFileSync, writeFileSync } from 'fs';
+import { cpSync, existsSync } from 'fs';
 
 const SITE_DEV_PORT = 5175;
 const SITE_PREVIEW_PORT = 5176;
@@ -31,7 +31,7 @@ function copyWsxPressPlugin(): Plugin {
   };
 }
 
-/** GitHub Pages SPA fallback: duplicate index.html as 404.html. */
+/** GitHub Pages SPA fallback: duplicate index.html as 404.html (no redirect — router uses pathname). */
 function copy404Plugin(): Plugin {
   return {
     name: 'copy-404',
@@ -44,24 +44,13 @@ function copy404Plugin(): Plugin {
       const notFoundHtml = path.resolve(outDir, '404.html');
       if (!existsSync(indexHtml)) return;
 
-      const redirectScript = `
-    <script>
-      if (!window.location.hash && window.location.pathname !== '${SITE_BASE}' && window.location.pathname !== '${SITE_BASE.replace(/\/$/, '')}') {
-        window.location.replace('${SITE_BASE}');
-      }
-    </script>`;
-
-      const htmlContent = readFileSync(indexHtml, 'utf-8').replace(
-        '</head>',
-        redirectScript + '\n  </head>',
-      );
-      writeFileSync(notFoundHtml, htmlContent, 'utf-8');
+      cpSync(indexHtml, notFoundHtml, { force: true });
     },
   };
 }
 
-export default defineConfig({
-  base: SITE_BASE,
+export default defineConfig(({ mode }) => ({
+  base: mode === 'test' ? '/luban-homebrew/' : SITE_BASE,
 
   plugins: [
     wsxPress({
@@ -116,4 +105,5 @@ export default defineConfig({
       '@wsxjs/wsx-router',
     ],
   },
-});
+
+}));

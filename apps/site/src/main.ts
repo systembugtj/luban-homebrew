@@ -7,11 +7,15 @@ import 'uno.css';
 import './main.css';
 import '@wsxjs/wsx-base-components';
 import '@wsxjs/wsx-router';
+import { normalizeTrailingSlash, patchPressFetchBase } from './site-base';
 import './i18n';
 import './App.wsx';
 
 const logger = createLogger('Luban-Site');
 const THEME_STORAGE_KEY = 'luban-theme';
+
+patchPressFetchBase();
+normalizeTrailingSlash();
 
 function initTheme(): void {
   const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'dark';

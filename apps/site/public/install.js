@@ -3,7 +3,7 @@
  * Install a formula from the luban-homebrew Homebrew tap.
  *
  * Usage:
- *   curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+ *   curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
  *   node public/install.js
  *
  * Env:

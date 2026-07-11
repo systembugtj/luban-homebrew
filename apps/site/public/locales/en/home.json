@@ -31,7 +31,7 @@
   },
   "install": {
     "title": "Install",
-    "script": "curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node",
+    "script": "curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node",
     "direct": "brew install --HEAD systembugtj/luban-homebrew/gopdf",
     "tap": "brew tap systembugtj/luban-homebrew\nbrew install --HEAD gopdf",
     "scriptLabel": "install.js",

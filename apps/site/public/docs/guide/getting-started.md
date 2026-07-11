@@ -27,7 +27,7 @@ Pick one:
 
 ```bash
 # 1. install.js (recommended)
-curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 
 # 2. Direct — Homebrew auto-taps
 brew install --HEAD systembugtj/luban-homebrew/gopdf

@@ -5,6 +5,7 @@ import { i18n } from '@wsxjs/wsx-i18next';
 import '@wsxjs/wsx-base-components';
 import styles from './AppFooter.css?inline';
 import { GITHUB_REPO_URL } from '../../constants/tap';
+import { sitePath } from '../../site-base';
 
 @autoRegister({ tagName: 'luban-app-footer' })
 @i18n('footer')
@@ -30,13 +31,17 @@ export class AppFooter extends LightComponent {
               <h4 class="footer-heading">{this.t('resources.title')}</h4>
               <ul class="footer-links">
                 <li>
-                  <wsx-link to="/docs/guide/getting-started">{this.t('resources.docs')}</wsx-link>
+                  <wsx-link to={sitePath('/docs/guide/getting-started')}>
+                    {this.t('resources.docs')}
+                  </wsx-link>
                 </li>
                 <li>
-                  <wsx-link to="/docs/guide/installation">{this.t('resources.install')}</wsx-link>
+                  <wsx-link to={sitePath('/docs/guide/installation')}>
+                    {this.t('resources.install')}
+                  </wsx-link>
                 </li>
                 <li>
-                  <wsx-link to="/formulas">{this.t('resources.formulas')}</wsx-link>
+                  <wsx-link to={sitePath('/formulas')}>{this.t('resources.formulas')}</wsx-link>
                 </li>
                 <li>
                   <a href={GITHUB_REPO_URL} target="_blank" rel="noopener noreferrer">

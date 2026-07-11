@@ -14,7 +14,7 @@ Three ways to install from **luban-homebrew**. All require **Homebrew**.
 Hosted at GitHub Pages — checks for `brew`, then runs `brew install`:
 
 ```bash
-curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 ```
 
 Raw file in repo:
@@ -35,13 +35,13 @@ Examples:
 
 ```bash
 # Install gopdf from HEAD (default until npm publish)
-curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 
 # Pin stable when bottles exist
-LUBAN_HEAD=0 curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+LUBAN_HEAD=0 curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 
 # Install a different formula (when added)
-LUBAN_FORMULA=my-tool curl -fsSL https://systembugtj.github.io/luban-homebrew/install.js | node
+LUBAN_FORMULA=my-tool curl -fsSL https://www.systembug.me/luban-homebrew/install.js | node
 ```
 
 ## 2. Direct install (no tap first)

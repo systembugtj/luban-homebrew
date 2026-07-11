@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://systembugtj.github.io/luban-homebrew/sitemap.xml
+Sitemap: https://www.systembug.me/luban-homebrew/sitemap.xml

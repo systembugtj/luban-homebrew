@@ -4,11 +4,18 @@ import { LightComponent, autoRegister } from '@wsxjs/wsx-core';
 import styles from './App.css?inline';
 import '@wsxjs/wsx-base-components';
 import '@wsxjs/wsx-router';
+import { sitePath } from './site-base';
 import './components/layout/AppHeader.wsx';
 import './components/layout/AppFooter.wsx';
 import './components/pages/HomePage.wsx';
 import './components/pages/FormulasPage.wsx';
 import './components/pages/DocsPage.wsx';
+
+const ROUTES = {
+  home: sitePath('/'),
+  formulas: sitePath('/formulas'),
+  docs: sitePath('/docs/:category/:page'),
+} as const;
 
 @autoRegister({ tagName: 'luban-app' })
 export default class App extends LightComponent {
@@ -23,10 +30,11 @@ export default class App extends LightComponent {
     return (
       <div class="app-container">
         <luban-app-header />
-        <wsx-router mode="hash">
-          <wsx-view route="/" component="home-page" />
-          <wsx-view route="/formulas" component="formulas-page" />
-          <wsx-view route="/docs/:category/:page" component="docs-page" />
+        <wsx-router>
+          <wsx-view route={ROUTES.home} component="home-page" />
+          <wsx-view route={`${ROUTES.home}/`} component="home-page" />
+          <wsx-view route={ROUTES.formulas} component="formulas-page" />
+          <wsx-view route={ROUTES.docs} component="docs-page" />
         </wsx-router>
         <luban-app-footer />
       </div>

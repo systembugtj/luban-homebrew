@@ -7,6 +7,7 @@ import styles from './AppHeader.css?inline';
 import '../../components/common/LanguageSwitcher.wsx';
 import '../../components/common/ThemeSwitcher.wsx';
 import { GITHUB_REPO_URL } from '../../constants/tap';
+import { siteAsset, sitePath } from '../../site-base';
 
 @autoRegister({ tagName: 'luban-app-header' })
 @i18n('common')
@@ -23,21 +24,21 @@ export class AppHeader extends LightComponent {
       <header class="header">
         <div class="header-container">
           <div class="header-brand">
-            <wsx-link to="/" class="brand-link">
-              <img src="/favicon.svg" alt={this.t('brandAlt')} class="brand-logo" />
+            <wsx-link to={sitePath('/')} class="brand-link">
+              <img src={siteAsset('favicon.svg')} alt={this.t('brandAlt')} class="brand-logo" />
               <span class="brand-title">{this.t('brandName')}</span>
             </wsx-link>
           </div>
 
           <nav class="header-nav">
-            <wsx-link to="/" class="nav-link" active-class="nav-link-active" exact>
+            <wsx-link to={sitePath('/')} class="nav-link" active-class="nav-link-active" exact>
               {this.t('home')}
             </wsx-link>
-            <wsx-link to="/formulas" class="nav-link" active-class="nav-link-active">
+            <wsx-link to={sitePath('/formulas')} class="nav-link" active-class="nav-link-active">
               {this.t('formulas')}
             </wsx-link>
             <wsx-link
-              to="/docs/guide/getting-started"
+              to={sitePath('/docs/guide/getting-started')}
               class="nav-link"
               active-class="nav-link-active"
             >
