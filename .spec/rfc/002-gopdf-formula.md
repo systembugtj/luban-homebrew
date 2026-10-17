@@ -26,6 +26,13 @@ brew install systembugtj/luban-homebrew/gopdf
 
 `Formula/gopdf.rb`
 
+## HEAD 构建策略
+
+1. `pnpm install --frozen-lockfile`
+2. `pnpm --filter @gopdfjs/pdf-cli run build`
+3. `rm -rf apps/site`（避免 deploy 解析 site 依赖）
+4. `pnpm --filter @gopdfjs/pdf-cli deploy --legacy --prod` → `libexec`
+
 ## 迁移到 stable（npm）
 
 1. 发布 `@gopdfjs/pdf-cli@VERSION` 到 npm
@@ -36,4 +43,5 @@ brew install systembugtj/luban-homebrew/gopdf
 ## Related
 
 - gopdf-cli [RFC 0002 install.js](https://github.com/gopdfjs/gopdf-cli/blob/main/.spec/rfc/0002-install-script.md)
+- [cangjie-nix RFC 0003](https://github.com/systembugtj/cangjie-nix/blob/main/.spec/rfc/0003-gopdf-nix-package.md) — Linux Nix package
 - [001-linglong-homebrew-tap.md](./001-linglong-homebrew-tap.md)

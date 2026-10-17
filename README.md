@@ -47,7 +47,7 @@ brew "<formula>"
 
 | Formula | 说明 |
 |---------|------|
-| **gopdf** | [gopdf-cli](https://github.com/gopdfjs/gopdf-cli) — 本地 PDF CLI（压缩、分析、OCR、MCP）。npm 发布前：`brew install --HEAD systembugtj/luban-homebrew/gopdf` |
+| **gopdf** | [gopdfjs/gopdf-cli](https://github.com/gopdfjs/gopdf-cli) — local PDF CLI (compress, analyze, OCR, MCP). npm 发布前：`brew install --HEAD systembugtj/luban-homebrew/gopdf` |
 
 ## 发布到 GitHub
 
