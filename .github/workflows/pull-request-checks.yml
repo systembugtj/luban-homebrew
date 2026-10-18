@@ -1,0 +1,95 @@
+name: Pull request checks
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  promotion-source:
+    name: Promotion source policy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require develop as source for main
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.repository }}
+        run: |
+          if [ "$BASE_REF" = "main" ] && { [ "$HEAD_REF" != "develop" ] || [ "$HEAD_REPO" != "$BASE_REPO" ]; }; then
+            echo "Pull requests into main must come from this repository's develop branch."
+            exit 1
+          fi
+
+  formula-checks:
+    name: Homebrew formula checks
+    runs-on: macos-14
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@848c272c7bfe984a197bd4d16383f4c106ec61e6 # 2026.09.21.1
+        with:
+          core: false
+          cask: false
+
+      - name: Tap pull request checkout
+        run: brew tap systembugtj/luban-homebrew "$GITHUB_WORKSPACE"
+
+      - name: Audit formulae and casks
+        run: |
+          tap="systembugtj/luban-homebrew"
+          for formula in Formula/*.rb; do
+            [ -f "$formula" ] || continue
+            name="${formula##*/}"
+            name="${name%.rb}"
+            brew trust --formula "$tap/$name"
+            brew audit --strict --online --formula "$tap/$name"
+          done
+          if [ -d Casks ]; then
+            for cask in Casks/*.rb; do
+              [ -f "$cask" ] || continue
+              name="${cask##*/}"
+              name="${name%.rb}"
+              brew trust --cask "$tap/$name"
+              brew audit --strict --online --cask "$tap/$name"
+            done
+          fi
+
+      - name: Install and test formulae
+        run: |
+          for formula in Formula/*.rb; do
+            [ -f "$formula" ] || continue
+            name="${formula##*/}"
+            name="${name%.rb}"
+            if grep -Eq '^[[:space:]]+url ' "$formula"; then
+              brew install --build-from-source "systembugtj/luban-homebrew/$name"
+            else
+              brew install --build-from-source --HEAD "systembugtj/luban-homebrew/$name"
+            fi
+            brew test "systembugtj/luban-homebrew/$name"
+          done
+
+  workflow-security:
+    name: GitHub Actions security scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Scan workflows with zizmor
+        uses: zizmorcore/zizmor-action@85b2b9fb8e3325e7a23d7d0a9d7ba5ae0f999e3e # v0.7.1
+        with:
+          advanced-security: false
