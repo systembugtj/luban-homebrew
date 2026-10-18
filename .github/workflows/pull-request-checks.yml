@@ -34,6 +34,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@848c272c7bfe984a197bd4d16383f4c106ec61e6 # 2026.09.21.1
@@ -45,30 +46,39 @@ jobs:
         run: brew tap systembugtj/luban-homebrew "$GITHUB_WORKSPACE"
 
       - name: Audit formulae and casks
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           tap="systembugtj/luban-homebrew"
-          for formula in Formula/*.rb; do
+          changed_files="$(git diff --name-only "$BASE_SHA...$HEAD_SHA" -- Formula Casks)"
+          while IFS= read -r formula; do
             [ -f "$formula" ] || continue
-            name="${formula##*/}"
+            case "$formula" in Formula/*.rb) ;; *) continue ;; esac
+            name="${formula#Formula/}"
             name="${name%.rb}"
             brew trust --formula "$tap/$name"
             brew audit --strict --online --formula "$tap/$name"
-          done
-          if [ -d Casks ]; then
-            for cask in Casks/*.rb; do
-              [ -f "$cask" ] || continue
-              name="${cask##*/}"
-              name="${name%.rb}"
-              brew trust --cask "$tap/$name"
-              brew audit --strict --online --cask "$tap/$name"
-            done
-          fi
+          done <<< "$changed_files"
+          while IFS= read -r cask; do
+            [ -f "$cask" ] || continue
+            case "$cask" in Casks/*.rb) ;; *) continue ;; esac
+            name="${cask#Casks/}"
+            name="${name%.rb}"
+            brew trust --cask "$tap/$name"
+            brew audit --strict --online --cask "$tap/$name"
+          done <<< "$changed_files"
 
       - name: Install and test formulae
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          for formula in Formula/*.rb; do
+          changed_files="$(git diff --name-only "$BASE_SHA...$HEAD_SHA" -- Formula)"
+          while IFS= read -r formula; do
             [ -f "$formula" ] || continue
-            name="${formula##*/}"
+            case "$formula" in Formula/*.rb) ;; *) continue ;; esac
+            name="${formula#Formula/}"
             name="${name%.rb}"
             if grep -Eq '^[[:space:]]+url ' "$formula"; then
               brew install --build-from-source "systembugtj/luban-homebrew/$name"
@@ -76,7 +86,7 @@ jobs:
               brew install --build-from-source --HEAD "systembugtj/luban-homebrew/$name"
             fi
             brew test "systembugtj/luban-homebrew/$name"
-          done
+          done <<< "$changed_files"
 
   workflow-security:
     name: GitHub Actions security scan
