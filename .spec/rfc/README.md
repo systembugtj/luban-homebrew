@@ -12,6 +12,8 @@
 | 编号 | 标题 | 状态 |
 |------|------|------|
 | [001](001-linglong-homebrew-tap.md) | Linglong Homebrew Tap | Accepted |
+| [002](002-gopdf-formula.md) | gopdf Homebrew Formula | Proposed |
+| [003](003-karen-cli-formula.md) | Karen CLI Homebrew Formula | Proposed |
 
 ## 工作流
 
