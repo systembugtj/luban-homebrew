@@ -7,8 +7,8 @@ cask "karen" do
   desc "System monitor and disk-space explorer"
   homepage "https://github.com/commandotj/ax-karen"
 
-  depends_on macos: ">= :high_sierra"
   depends_on arch: :arm64
+  depends_on macos: :high_sierra
 
   app "Karen.app"
 end
