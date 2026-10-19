@@ -8,7 +8,6 @@ cask "karen" do
   homepage "https://github.com/commandotj/ax-karen"
 
   depends_on arch: :arm64
-  depends_on macos: :high_sierra
 
   app "Karen.app"
 end
