@@ -19,8 +19,8 @@ class Gopdf < Formula
   license "MIT"
   head "https://github.com/gopdfjs/gopdf-cli.git", branch: "main"
 
-  depends_on "node"
   depends_on "pnpm" => :build
+  depends_on "node"
 
   def install
     # pnpm deploy needs a writable HOME during the build.
@@ -29,7 +29,7 @@ class Gopdf < Formula
     system "pnpm", "install", "--frozen-lockfile"
     system "pnpm", "--filter", "@gopdfjs/pdf-cli", "run", "build"
     # site is not needed for CLI; deploy otherwise resolves apps/site deps.
-    rm_rf "apps/site"
+    rm_r "apps/site"
     system "pnpm", "--filter", "@gopdfjs/pdf-cli", "deploy", "--legacy", "--prod", libexec
 
     write_wrapper "gopdf"
@@ -39,7 +39,7 @@ class Gopdf < Formula
   def write_wrapper(name)
     (bin/name).write <<~SHELL
       #!/bin/bash
-      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/dist/index.mjs" "$@"
+      exec "#{formula_opt_bin("node")}/node" "#{libexec}/dist/index.mjs" "$@"
     SHELL
   end
 
