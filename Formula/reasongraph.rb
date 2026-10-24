@@ -4,8 +4,8 @@
 class Reasongraph < Formula
   desc "Repository decision history CLI for coding agents"
   homepage "https://github.com/borg0ai/dx-reasongraph"
-  url "https://github.com/borg0ai/dx-reasongraph/releases/download/v0.2.3/borg0ai-reasongraph-0.2.3.tgz"
-  sha256 "c487210e3b4c5ce7ece96b8819eb050bcb8a50c73fc59746884af416633c6fa6"
+  url "https://github.com/borg0ai/dx-reasongraph/releases/download/v0.2.4/borg0ai-reasongraph-0.2.4.tgz"
+  sha256 "d57054d164a915a0e3d4e6ad6c1bd8984e7bfaf53f7684da85572912243921a1"
   license "MIT"
 
   depends_on "node"
