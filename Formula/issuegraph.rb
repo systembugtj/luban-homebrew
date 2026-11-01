@@ -4,7 +4,6 @@
 class Issuegraph < Formula
   desc "Git-tracked issue graph CLI for coding agents"
   homepage "https://github.com/borg0ai/dx-issuegraph"
-  version "1.3.1"
   license "MIT"
 
   on_macos do
