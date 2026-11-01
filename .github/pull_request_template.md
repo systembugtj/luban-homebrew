@@ -13,4 +13,4 @@
 - [ ] Formula installs successfully and its `test` block checks a real command; Cask passes strict audit.
 - [ ] Install scripts, downloaded binaries, permissions, and network access were reviewed.
 - [ ] No credentials, tokens, or secrets are required by the formula or cask.
-- [ ] Target branch is `develop`; `main` changes come through a `develop` promotion PR.
+- [ ] Source branch uses `feature/<name>`; target branch is `main`.
