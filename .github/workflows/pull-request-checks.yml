@@ -3,29 +3,12 @@ name: Pull request checks
 on:
   pull_request:
     branches:
-      - develop
       - main
 
 permissions:
   contents: read
 
 jobs:
-  promotion-source:
-    name: Promotion source policy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Require develop as source for main
-        env:
-          BASE_REF: ${{ github.event.pull_request.base.ref }}
-          HEAD_REF: ${{ github.event.pull_request.head.ref }}
-          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          BASE_REPO: ${{ github.repository }}
-        run: |
-          if [ "$BASE_REF" = "main" ] && { [ "$HEAD_REF" != "develop" ] || [ "$HEAD_REPO" != "$BASE_REPO" ]; }; then
-            echo "Pull requests into main must come from this repository's develop branch."
-            exit 1
-          fi
-
   formula-checks:
     name: Homebrew formula checks
     runs-on: macos-15
