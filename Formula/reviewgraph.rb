@@ -6,25 +6,25 @@ class Reviewgraph < Formula
 
   desc "Local-first code review knowledge graph and MCP server"
   homepage "https://github.com/borg0ai/dx-reviewgraph"
-  url "https://github.com/borg0ai/dx-reviewgraph/releases/download/v2.3.11/reviewgraph-2.3.11-py3-none-any.whl",
+  url "https://github.com/borg0ai/dx-reviewgraph/releases/download/v2.4.0/reviewgraph-2.4.0-py3-none-any.whl",
       using: :nounzip
-  sha256 "76326b63013f949762a963929562bcdbe1d4f8ac4f3fea496aa5a856cfc0d633"
+  sha256 "0551e7ad56e62bcf20335d1f138670cc5658a2e7aae194e718eb1a19f770eb27"
   license "MIT"
 
   depends_on "python@3.13"
 
   resource "reviewgraph-engine" do
-    url "https://github.com/borg0ai/dx-reviewgraph/releases/download/v2.3.11/reviewgraph_engine-2.3.11-py3-none-any.whl",
+    url "https://github.com/borg0ai/dx-reviewgraph/releases/download/v2.4.0/reviewgraph_engine-2.4.0-py3-none-any.whl",
         using: :nounzip
-    sha256 "35c62127ead08662ad78b4ca9c9bf4395efa71e1dfb38384c89a3f72ed8065bf"
+    sha256 "9ee1db60be5b3b84ed61a0b6547fad5d8e17dc38ffc24c81355c0840de5ab9cd"
   end
 
   def install
     venv = virtualenv_create(libexec, "python3.13")
     engine = resource("reviewgraph-engine")
-    engine_wheel = buildpath/"reviewgraph_engine-2.3.11-py3-none-any.whl"
+    engine_wheel = buildpath/"reviewgraph_engine-2.4.0-py3-none-any.whl"
     cp engine.cached_download, engine_wheel
-    cli_wheel = buildpath/"reviewgraph-2.3.11-py3-none-any.whl"
+    cli_wheel = buildpath/"reviewgraph-2.4.0-py3-none-any.whl"
     cp stable.cached_download, cli_wheel unless cli_wheel.exist?
 
     # venv.pip_install passes --no-deps; the wheels need their PyPI dependencies
