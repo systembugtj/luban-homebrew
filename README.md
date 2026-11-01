@@ -81,9 +81,8 @@ brew "<formula>"
 ## Pull request 流程
 
 - 新 CLI、命令行工具和库使用 Formula；macOS 图形应用使用 Cask。
-- 从 `develop` 创建功能分支，向 `develop` 提 PR。CI 对 Formula/Cask 执行 Homebrew 严格审计，安装并测试 Formula，并扫描 GitHub Actions 安全风险。
-- 只有 `develop` 可以向 `main` 提 PR。CI 会拒绝其他来源分支和 fork 的 `develop` 分支。
-- 合并 `develop` → `main` 前，等待同一组检查通过并审阅变更。
-- 禁止直接推送 `develop` 和 `main`。仓库管理员还须在 GitHub Rulesets 为两条分支启用“要求 PR”，并将 `Promotion source policy`, `Homebrew formula checks`, `GitHub Actions security scan` 设为必需检查；工作流本身不能阻止绕过规则的直接推送。
+- 从最新的 `main` 创建 `feature/<name>` 分支，向 `main` 提 PR。CI 对 Formula/Cask 执行 Homebrew 严格审计，安装并测试 Formula，并扫描 GitHub Actions 安全风险。
+- `main` 只接受 PR；合并前等待必需检查通过并完成审阅。
+- 禁止直接推送 `main`。仓库管理员须在 GitHub Rulesets 为 `main` 启用“要求 PR”，并将 `Homebrew formula checks`、`GitHub Actions security scan` 设为必需检查。
 
 更多说明见 [Homebrew — How to Create and Maintain a Tap](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap)。
