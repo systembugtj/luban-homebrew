@@ -8,23 +8,23 @@ class Issuegraph < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.2/issuegraph_1.3.2_darwin-arm64.tar.gz"
-      sha256 "fe30d373def8e81f558f1b55ef4ce30b0f2789321fbd76ae8676a3661fd00dca"
+      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.3/issuegraph_1.3.3_darwin-arm64.tar.gz"
+      sha256 "bf2b71cda66cb3c0344f02c31202463458d878a674b135398543e36551b8f5f4"
     end
     on_intel do
-      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.2/issuegraph_1.3.2_darwin-amd64.tar.gz"
-      sha256 "7e4fbb039ec2f3b764c337f84dd72af5ce2d7a93547926d85fc395e0367eeca3"
+      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.3/issuegraph_1.3.3_darwin-amd64.tar.gz"
+      sha256 "3b7e74c066885a0ac425ccd823d4402d0ebf5e099c1ebd72893c81d5e85c1400"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.2/issuegraph_1.3.2_linux-arm64.tar.gz"
-      sha256 "ebae073743ad4dd7c4b45990a14e1d3356576bdd7f109c3a898a82661f6fa14d"
+      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.3/issuegraph_1.3.3_linux-arm64.tar.gz"
+      sha256 "c9c96a1d90300f778df720e11c137242d3f41f2fe405865c2174068298f8c7dc"
     end
     on_intel do
-      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.2/issuegraph_1.3.2_linux-amd64.tar.gz"
-      sha256 "e9ccbb39abf7c319a6e25e6adaba88ea81144114205a2ce333adcba43071ae4f"
+      url "https://github.com/borg0ai/dx-issuegraph/releases/download/v1.3.3/issuegraph_1.3.3_linux-amd64.tar.gz"
+      sha256 "6f049575fc547e265e036f539bef00a6261ae70f62584b403da9ece3efc7aaa2"
     end
   end
 
